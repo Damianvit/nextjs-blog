@@ -1,4 +1,6 @@
 // pages/index.js
+import Link from "next/link";
+import Date from "../components/date";
 import Head from "next/head";
 import Layout, { siteTitle } from "../components/layout";
 import utilStyles from "../styles/utils.module.css";
@@ -20,9 +22,9 @@ export default function Home({ allPostsData }) {
             </Head>
             <section className={utilStyles.headingMd}>
                 <p>
-                    I am Damian If you like to play a lot then you are at the
-                    right place and at the wrong place simutanously. Whether
-                    right or wrong, timing makes it so
+                    I am Damian VC. A challenging Project on Artificial
+                    intelligence, Web development or Smart Contrants will as
+                    always get my full attention. Let's build together!
                 </p>
                 <p>
                     (This is a sample website - you’ll be building a site like
@@ -38,11 +40,11 @@ export default function Home({ allPostsData }) {
                 <ul className={utilStyles.list}>
                     {allPostsData.map(({ id, date, title }) => (
                         <li className={utilStyles.listItem} key={id}>
-                            {title}
+                            <Link href={`/posts/${id}`}>{title}</Link>
                             <br />
-                            {id}
-                            <br />
-                            {date}
+                            <small className={utilStyles.lightText}>
+                                <Date dateString={date} />
+                            </small>
                         </li>
                     ))}
                 </ul>
